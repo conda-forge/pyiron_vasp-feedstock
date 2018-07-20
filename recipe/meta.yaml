@@ -1,6 +1,6 @@
 {% set name = "pyiron_vasp" %}
-{% set version = "0.1.4" %}
-{% set sha256 = "b7ee17abca6ccd79b090ad8e26c32dffafa1f355246ca39eeb1a83a62974b9a0" %}
+{% set version = "0.1.7" %}
+{% set sha256 = "0dcd80c862bf593855bee06d4e6ccea2918dff9bf452656d4558b36bbca8666e" %}
 
 package:
   name: {{ name|lower }}
