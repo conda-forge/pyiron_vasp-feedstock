@@ -1,0 +1,31 @@
+From 097babdbf82c6bdcf4667e90439a5ba3c1ef982e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Jan=C3=9Fen?= <janssen@mpie.de>
+Date: Thu, 27 Feb 2025 16:58:16 +0100
+Subject: [PATCH] Fix vasp report
+
+---
+ pyiron_vasp/vasp/parser/report.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyiron_vasp/vasp/parser/report.py b/pyiron_vasp/vasp/parser/report.py
+index 0065c625..fe6d15d1 100644
+--- a/pyiron_vasp/vasp/parser/report.py
++++ b/pyiron_vasp/vasp/parser/report.py
+@@ -3,7 +3,7 @@
+ # Distributed under the terms of "New BSD License", see the LICENSE file.
+ 
+ import numpy as np
+-from scipy.integrate import cumtrapz
++from scipy.integrate import cumulative_trapezoid
+ 
+ __author__ = "Sudarsan Surendralal"
+ __copyright__ = (
+@@ -43,7 +43,7 @@ def from_file(self, filename="REPORT"):
+             ]
+             rel_lines = [lines[i] for i, line in enumerate(lines) if "cc>" in line]
+             cv = np.genfromtxt(rel_lines, usecols=[2])
+-            fe = cumtrapz(lam, cv)
++            fe = cumulative_trapezoid(lam, cv)
+             self.parse_dict["cv_full"] = cv
+             self.parse_dict["derivative"] = lam
+             self.parse_dict["cv"] = cv[:-1]
