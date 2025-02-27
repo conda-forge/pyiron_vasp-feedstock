@@ -10,10 +10,12 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - cumtrapz.patch
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
@@ -51,7 +53,7 @@ about:
   home: https://github.com/pyiron/pyiron_vasp
   license: BSD-3-Clause
   license_family: BSD
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.txt'
+  license_file: LICENSE
   summary: 'Vasp plugin for pyiron - an integrated development environment (IDE) for computational materials science.'
   description: |
     pyiron was initially developed in the Computational Materials Design department of Joerg Neugebauer at the
