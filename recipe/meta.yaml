@@ -13,10 +13,11 @@ source:
   patches:
     - cumtrapz.patch
     - readfunct.patch
+    - get_ediel_sol.patch
 
 build:
   noarch: python
-  number: 2
+  number: 3
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
