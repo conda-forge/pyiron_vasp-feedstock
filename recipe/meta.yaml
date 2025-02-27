@@ -15,10 +15,11 @@ source:
     - readfunct.patch
     - get_ediel_sol.patch
     - es.patch
+    - bader.patch
 
 build:
   noarch: python
-  number: 4
+  number: 5
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
