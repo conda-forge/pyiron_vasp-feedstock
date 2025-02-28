@@ -1,6 +1,6 @@
 {% set name = "pyiron_vasp" %}
-{% set version = "0.2.1" %}
-{% set sha256 = "8f7aeac6712ba9c3d62fbc99185bb25183a3f08d6523426834a73aaf233e2594" %}
+{% set version = "0.2.2" %}
+{% set sha256 = "03aab7ff8f85c60f0983d1a8f9264d794c6a61d4ab3f87efb5628ffca6b824fc" %}
 
 package:
   name: {{ name|lower }}
@@ -10,18 +10,10 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - cumtrapz.patch
-    - readfunct.patch
-    - get_ediel_sol.patch
-    - es.patch
-    - bader.patch
-    - select.patch
-    - poscar.patch
 
 build:
   noarch: python
-  number: 6
+  number: 0
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
