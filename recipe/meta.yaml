@@ -16,10 +16,12 @@ source:
     - get_ediel_sol.patch
     - es.patch
     - bader.patch
+    - select.patch
+    - poscar.patch
 
 build:
   noarch: python
-  number: 5
+  number: 6
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
