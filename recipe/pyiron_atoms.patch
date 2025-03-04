@@ -1,0 +1,41 @@
+From 479647b481f48b2b3726ca2dcd3665bdcac6b8bf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Jan=C3=9Fen?= <janssen@mpie.de>
+Date: Tue, 4 Mar 2025 17:42:40 +0100
+Subject: [PATCH] More ASE patches
+
+---
+ pyiron_vasp/vasp/output.py | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/pyiron_vasp/vasp/output.py b/pyiron_vasp/vasp/output.py
+index 9a6700a..54962c0 100644
+--- a/pyiron_vasp/vasp/output.py
++++ b/pyiron_vasp/vasp/output.py
+@@ -350,7 +350,10 @@ def to_dict(self):
+         }
+ 
+         if self._structure is not None:
+-            output_dict["structure"] = self.structure.to_dict()
++            if isinstance(self._structure, Atoms):
++                output_dict["structure"] = self.structure.todict()
++            else:
++                output_dict["structure"] = self.structure.to_dict()
+ 
+         if self.electrostatic_potential.total_data is not None:
+             output_dict["electrostatic_potential"] = (
+@@ -517,10 +520,14 @@ def get_final_structure_from_file(
+             raise IOError("Unable to read output structure")
+     else:
+         input_structure = structure.copy()
++        if isinstance(input_structure, Atoms):
++            species_list = input_structure.get_chemical_symbols()
++        else:
++            species_list = input_structure.get_parent_symbols()
+         try:
+             output_structure = read_atoms_funct(
+                 filename=filename,
+-                species_list=input_structure.get_parent_symbols(),
++                species_list=species_list,
+             )
+             input_structure.cell = output_structure.cell.copy()
+             input_structure.positions[sorted_indices] = output_structure.positions
