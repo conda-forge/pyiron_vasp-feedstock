@@ -1,6 +1,6 @@
 {% set name = "pyiron_vasp" %}
-{% set version = "0.2.3" %}
-{% set sha256 = "8ddceec13c6ec52dcefa112dc95ca80565e3a5342533a4b90b56eb3ed9d11360" %}
+{% set version = "0.2.4" %}
+{% set sha256 = "0ef4f2e1bc1151c0d24d59f4deb20ce311dfc3a175d5bf3ed03d515dffd52268" %}
 
 package:
   name: {{ name|lower }}
@@ -10,12 +10,10 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - pyiron_atoms.patch
 
 build:
   noarch: python
-  number: 2
+  number: 0
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
