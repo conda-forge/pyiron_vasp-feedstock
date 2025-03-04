@@ -1,0 +1,31 @@
+From 35a40840e288fb5fbf9569f9bc57338da0fd08db Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Jan=C3=9Fen?= <janssen@mpie.de>
+Date: Tue, 4 Mar 2025 21:55:23 +0100
+Subject: [PATCH] Type comparison
+
+---
+ pyiron_vasp/vasp/output.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyiron_vasp/vasp/output.py b/pyiron_vasp/vasp/output.py
+index 54962c0..7fff51c 100644
+--- a/pyiron_vasp/vasp/output.py
++++ b/pyiron_vasp/vasp/output.py
+@@ -350,7 +350,7 @@ def to_dict(self):
+         }
+ 
+         if self._structure is not None:
+-            if isinstance(self._structure, Atoms):
++            if type(input_structure) == Atoms:
+                 output_dict["structure"] = self.structure.todict()
+             else:
+                 output_dict["structure"] = self.structure.to_dict()
+@@ -520,7 +520,7 @@ def get_final_structure_from_file(
+             raise IOError("Unable to read output structure")
+     else:
+         input_structure = structure.copy()
+-        if isinstance(input_structure, Atoms):
++        if type(input_structure) == Atoms:
+             species_list = input_structure.get_chemical_symbols()
+         else:
+             species_list = input_structure.get_parent_symbols()
