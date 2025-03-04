@@ -16,7 +16,7 @@ index 54962c0..7fff51c 100644
  
          if self._structure is not None:
 -            if isinstance(self._structure, Atoms):
-+            if type(input_structure) == Atoms:
++            if type(self._structure) == Atoms:
                  output_dict["structure"] = self.structure.todict()
              else:
                  output_dict["structure"] = self.structure.to_dict()
