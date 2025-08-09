@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyiron_vasp
-  version: 0.2.7
+  version: 0.2.8
   python_min: 3.10
 
 package:
@@ -11,13 +11,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 2a6b359a345f418a6e7c793d38d8fadb17763cd7d8f92fd341b4281080feeeeb
-  patches:
-    - uf8.patch
-    - kpoint.patch
+  sha256: 128687bf5981661384254f4e9e19e66d4ad41e55d46b2b9b1b173ce5d1451ed1
 
 build:
-  number: 2
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -25,9 +22,8 @@ requirements:
   host:
     - python ${{ python_min }}.*
     - pip
-    - setuptools
-    - versioneer
-    - toml
+    - hatchling
+    - hatch-vcs
     - ase
     - defusedxml
     - numpy
@@ -39,7 +35,7 @@ requirements:
     - defusedxml >=0.7.0,<=0.7.1
     - numpy >=1.26.0,<=2.2.4
     - pandas >=2.0.3,<=2.3.1
-    - scipy >=1.11.1,<=1.15.2
+    - scipy >=1.11.1,<=1.16.0
 
 tests:
   - python:
