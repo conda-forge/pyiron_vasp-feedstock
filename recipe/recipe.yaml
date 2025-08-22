@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyiron_vasp
-  version: "0.2.11"
+  version: "0.2.12"
   python_min: 3.10
 
 package:
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 0eff9c1ff715f069d6542348eee2426df64ea3a68f6d62d2f04bf1e4f6e5d7fe
+  sha256: d6c73cd7cc5536a4d40d77bf9823af4fe979ea854f78f2c77a9356084246c495
 
 build:
   number: 0
@@ -35,7 +35,7 @@ requirements:
     - defusedxml >=0.7.0,<=0.7.1
     - numpy >=1.26.0,<=2.3.2
     - pandas >=2.0.3,<=2.3.2
-    - scipy >=1.11.1,<=1.16.0
+    - scipy >=1.11.1,<=1.16.1
 
 tests:
   - python:
